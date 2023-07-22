@@ -56,7 +56,7 @@ impl Ball {
     }
 
     pub fn is_collision(&mut self, x: f32, y: f32, w: f32, h: f32) -> bool {
-        // temporabrick_y variables to set edges for testing
+        // temp variables to set edges for testing
         let mut test_x: f32 = self.x;
         let mut test_y: f32 = self.y;
 
