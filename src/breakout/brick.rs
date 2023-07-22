@@ -6,6 +6,7 @@ pub struct Brick {
     pub w: f32,
     pub h: f32,
     pub color: Color,
+    pub active: bool,
 }
 
 impl Default for Brick {
@@ -16,6 +17,7 @@ impl Default for Brick {
             w: 40.0,
             h: 10.0,
             color: WHITE,
+            active: true,
         }
     }
 }

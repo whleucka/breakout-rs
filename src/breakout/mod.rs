@@ -29,6 +29,45 @@ impl Game {
         }
     }
 
+    pub async fn run(&mut self) {
+        self.load_level(1);
+        loop {
+            clear_background(BLACK);
+            self.event_handler();
+
+            // Move the player and the ball x,y coordinates
+            self.player.movement();
+            self.ball.movement();
+
+            self.detect_collision();
+
+            // Draw player and ball
+            self.player.draw();
+            self.ball.draw();
+
+            // Draw all the bricks
+            self.bricks
+                .iter_mut()
+                .filter(|brick| brick.active)
+                .for_each(|brick| brick.draw());
+
+            next_frame().await
+        }
+    }
+
+    pub fn detect_collision(&mut self) {
+        self.bricks
+            .iter_mut()
+            .filter(|brick| brick.active)
+            .for_each(|brick| {
+                if self.ball.is_collision(brick.x, brick.y, brick.w, brick.h) {
+                    brick.active = false;
+                    self.ball.dx = -1 * self.ball.dx;
+                    self.ball.dy = -1 * self.ball.dy;
+                }
+            })
+    }
+
     pub fn load_level(&mut self, level: i32) {
         self.level = level;
         self.load_bricks();
