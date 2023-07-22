@@ -1,6 +1,6 @@
 pub mod ball;
-pub mod player;
 pub mod brick;
+pub mod player;
 
 use macroquad::prelude::*;
 
@@ -12,19 +12,19 @@ pub struct Game {
     pub ball: Ball,
     pub player: Player,
     pub bricks: Vec<Brick>,
-    pub level: i32
+    pub level: i32,
 }
 
 impl Game {
     pub fn new() -> Self {
         let player = Player::default();
-        let x =  (screen_width() - player.w) / 2.0;
-        let y =  screen_height() - player.h - 50.0;
+        let x = (screen_width() - player.w) / 2.0;
+        let y = screen_height() - player.h - 50.0;
         Self {
-           ball: Ball::new(x + player.w / 2.0, y),
-           player: Player::new(x,y),
-           bricks: Vec::new(),
-           level: 0
+            ball: Ball::new(x + player.w / 2.0, y),
+            player: Player::new(x, y),
+            bricks: Vec::new(),
+            level: 0,
         }
     }
 
@@ -42,7 +42,7 @@ impl Game {
         for h in 0..rows {
             for i in 0..cols {
                 let x: f32 = x_offset + defaults.x + defaults.w * i as f32;
-                let y: f32 = y_offest + defaults.y +defaults.h * h as f32;
+                let y: f32 = y_offest + defaults.y + defaults.h * h as f32;
                 let brick = Brick::new(x, y);
                 self.bricks.push(brick);
             }

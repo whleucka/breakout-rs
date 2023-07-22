@@ -66,4 +66,3 @@ impl Player {
         draw_rectangle(self.x, self.y, self.w, self.h, self.color);
     }
 }
-

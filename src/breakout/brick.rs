@@ -29,7 +29,7 @@ impl Brick {
             ..Default::default()
         }
     }
-    
+
     pub fn draw(&mut self) {
         draw_rectangle(self.x, self.y, self.w, self.h, self.color);
     }
