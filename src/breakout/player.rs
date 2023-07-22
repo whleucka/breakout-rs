@@ -18,13 +18,11 @@ pub enum PlayerDirection {
 
 impl Default for Player {
     fn default() -> Self {
-        let w: f32 = 100.0;
-        let h: f32 = 10.0;
         Self {
             x: 0.0,
             y: 150.0,
-            w,
-            h,
+            w: 100.0,
+            h: 10.0,
             speed: 15.0,
             color: RED,
             direction: PlayerDirection::IDLE,

@@ -23,6 +23,7 @@ impl Game {
         Self {
             ball: Ball::new(x + player.w / 2.0, y),
             player: Player::new(x, y),
+            // Vector of bricks
             bricks: Vec::new(),
             level: 0,
         }

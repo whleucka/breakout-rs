@@ -21,7 +21,6 @@ impl Default for Brick {
 }
 
 impl Brick {
-    // The new method will spread the defaults
     pub fn new(x: f32, y: f32) -> Self {
         Self {
             x,
