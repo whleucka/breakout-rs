@@ -16,18 +16,28 @@ pub enum PlayerDirection {
     RIGHT,
 }
 
-impl Player {
-    pub fn new() -> Self {
+impl Default for Player {
+    fn default() -> Self {
         let w: f32 = 100.0;
         let h: f32 = 10.0;
         Self {
-            x: (screen_width() - w) / 2.0,
-            y: screen_height() - h - 50.0,
+            x: 0.0,
+            y: 150.0,
             w,
             h,
             speed: 15.0,
             color: RED,
             direction: PlayerDirection::IDLE,
+        }
+    }
+}
+
+impl Player {
+    pub fn new(x: f32, y: f32) -> Self {
+        Self {
+            x,
+            y,
+            ..Default::default()
         }
     }
     pub fn left(&mut self) {

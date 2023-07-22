@@ -11,17 +11,27 @@ pub struct Ball {
     pub speed: f32,
 }
 
-impl Ball {
-    pub fn new() -> Self {
+impl Default for Ball {
+    fn default() -> Self {
         Self {
-            active: true,
             x: 150.0,
             y: 50.0,
+            active: true,
             r: 5.0,
             dx: 1,
             dy: -1,
             color: WHITE,
             speed: 5.0,
+        }
+    }
+}
+
+impl Ball {
+    pub fn new(x: f32, y: f32) -> Self {
+        Self {
+            x,
+            y,
+            ..Default::default()
         }
     }
     pub fn movement(&mut self) {
