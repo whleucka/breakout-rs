@@ -6,7 +6,7 @@ breakout-rs s a thrilling, heart-pounding, brick-busting extravaganza brought to
 
 
 ### Features
-- 100% Rust: It's *blazingly fast*™.
+- 100% Rust: It's *blazingly fast*™
 - Fancy Graphics: Immerse yourself in the mesmerizing world of block-breaking!
 - Epic Sound Effects: Listen to the awe-inspiring "beep boop" symphony as you obliterate bricks with your unstoppable ball!
 - Brick Physics: Experience the most realistic brick destruction simulation ever seen in a Rust game.
