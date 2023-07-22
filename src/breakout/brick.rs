@@ -11,23 +11,22 @@ pub struct Brick {
 impl Default for Brick {
     fn default() -> Self {
         Self {
-            x: (screen_width() - 100.0) / 2.0,
-            y: screen_height() - 10.0 - 50.0,
-            w: 100.0,
+            x: 0.0,
+            y: 0.0,
+            w: 40.0,
             h: 10.0,
-            color: RED,
+            color: WHITE,
         }
     }
 }
 
 impl Brick {
-    pub fn new(w: f32, h: f32) -> Self {
+    // The new method will spread the defaults
+    pub fn new(x: f32, y: f32) -> Self {
         Self {
-            x: (screen_width() - w) / 2.0,
-            y: screen_height() - h - 50.0,
-            w,
-            h,
-            color: WHITE,
+            x,
+            y,
+            ..Default::default()
         }
     }
     

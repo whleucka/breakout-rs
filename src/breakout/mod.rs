@@ -27,14 +27,15 @@ impl Game {
     pub fn load_level(&mut self, level: i32) {
         self.level = level;
 
-        let start_x: f32 = self.ball.r;
-        let start_y: f32 = self.ball.r*2.0;
-        let rows: i32 = (screen_width() - start_x * 2.).floor() as i32;
-        let cols: i32 = level;
-        for h in 0..cols {
-            for i in 0..rows {
-                let x: f32 = start_x + (self.ball.r as i32 * 4 * i) as f32;
-                let y: f32 = start_y + (self.ball.r as i32 * 4 * h) as f32;
+        let defaults = Brick::default();
+        let x_offset: f32 = 30.0;
+        let y_offest: f32 = 20.0;
+        let rows: i32 = level + 5;
+        let cols: i32 = (screen_width() / defaults.w) as i32 - 1;
+        for h in 0..rows {
+            for i in 0..cols {
+                let x: f32 = x_offset + defaults.x + defaults.w * i as f32;
+                let y: f32 = y_offest + defaults.y +defaults.h * h as f32;
                 let brick = Brick::new(x, y);
                 self.bricks.push(brick);
             }
