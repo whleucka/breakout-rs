@@ -13,6 +13,7 @@ pub struct Game {
     pub player: Player,
     pub bricks: Vec<Brick>,
     pub level: i32,
+    pub score: i64,
 }
 
 impl Game {
@@ -26,6 +27,7 @@ impl Game {
             // Vector of bricks
             bricks: Vec::new(),
             level: 0,
+            score: 0,
         }
     }
 
@@ -56,16 +58,25 @@ impl Game {
     }
 
     pub fn detect_collision(&mut self) {
+        // Bricks and ball
         self.bricks
             .iter_mut()
             .filter(|brick| brick.active)
             .for_each(|brick| {
                 if self.ball.is_collision(brick.x, brick.y, brick.w, brick.h) {
                     brick.active = false;
-                    self.ball.dx = -1 * self.ball.dx;
-                    self.ball.dy = -1 * self.ball.dy;
+                    // flip the direction
+                    //self.ball.dx *= -1;
+                    self.ball.dy *= -1;
+                    // Increment score
+                    self.score += 500;
                 }
-            })
+            });
+        // Player & ball
+        if self.player.is_collision(self.ball.x, self.ball.y, self.ball.r) {
+            // Flip the direction
+            self.ball.dy *= -1;
+        }
     }
 
     pub fn load_level(&mut self, level: i32) {
@@ -77,7 +88,7 @@ impl Game {
         let defaults = Brick::default();
         let x_offset: f32 = 30.0;
         let y_offest: f32 = 20.0;
-        let rows: i32 = self.level + 5;
+        let rows: i32 = self.level + 3;
         let cols: i32 = (screen_width() / defaults.w) as i32 - 1;
         for h in 0..rows {
             for i in 0..cols {

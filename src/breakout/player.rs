@@ -38,6 +38,18 @@ impl Player {
             ..Default::default()
         }
     }
+    pub fn is_collision(&mut self, x: f32, y: f32, r: f32) -> bool {
+        let top_left = self.x;
+        let top_right = self.x + self.w;
+        let top = self.y;
+        let bottom = self.y + self.h;
+        if x + r > top_left && x + r < top_right {
+            if y + r > top && y + r < bottom {
+                return true;
+            }
+        } 
+        return false;
+    }
     pub fn left(&mut self) {
         if self.x - self.speed < 0.0 {
             self.x = 0.0;
